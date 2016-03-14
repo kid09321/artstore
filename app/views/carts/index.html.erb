@@ -1,0 +1,33 @@
+<h2>購物車列表</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>商品名稱</th>
+      <th>單價</th>
+      <th>數量</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+    <tr>
+      <td><% if item.photo.image.present? %>
+      <%= image_tag(item.photo.image.thumb.url, class: "thumbnail") %>
+      <% else %>
+      <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+      <% end %></td>
+      <td><%= item.title %></td>
+      <td><%= item.price %></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+  <div class="clearfix">
+    <span class="pull-right">總計<%= render_total_price(current_cart) %> NTD</span>
+  </div>
+  <div class="clearfix">
+    <span class="pull-right"><%= link_to("確認購買", "#" , class: "btn btn-danger") %></span>
+    </div>

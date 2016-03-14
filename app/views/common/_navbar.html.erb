@@ -10,7 +10,7 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to "#" do%>購物車<span class="fa fa-shopping-cart"></span>(0) <% end %></li>
+      <li><%= link_to carts_path do%>購物車<span class="fa fa-shopping-cart"></span>(<%= render_cart_items_count(current_cart) %>) <% end %></li>
       <% if !current_user %>
       <li><%= link_to("註冊", new_user_registration_path) %></li>
       <li><%= link_to("登入", new_user_session_path) %></li>
