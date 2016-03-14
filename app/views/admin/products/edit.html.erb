@@ -1,0 +1,32 @@
+<h2>編輯商品</h2>
+<div class="col-md-6 col-md-offset-3">
+<%= simple_form_for [:admin, @product] do |f| %>
+<div class="group">
+<%= f.input :title %>
+</div>
+<div class="group">
+<%= f.input :description %>
+</div>
+<div class="group">
+<%= f.input :quantity %>
+</div>
+<div class="group">
+<%= f.input :price %>
+</div>
+<div class="group">
+<% if @product.photo.image %>
+<%= image_tag(@product.photo.image.thumb.url, class: "thumbnail") %>
+<% else %>
+<%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+<% end %>
+</div>
+<div class="group">
+<%= f.simple_fields_for :photo do |c| %>
+<%= c.input :image, as: :file %>
+<% end %>
+</div>
+<div class="form-actions">
+<%= f.submit "update", class: "btn btn-primary", disable_with: "Updating..."  %>
+</div>
+<% end %>
+</div>

@@ -1,0 +1,33 @@
+<div class="col-md-8 col-md-offset-2">
+<h2>新增商品</h2>
+<%= simple_form_for [:admin, @product] do |f| %>
+<div class="form">
+<%= f.input :title %>
+</div>
+<div class="form">
+<%= f.input :description %>
+</div>
+<div class="form">
+<%= f.input :quantity %>
+</div>
+<div class="form">
+<%= f.input :price %>
+</div>
+<div class="group">
+<% if @product.photo.image %>
+<%= image_tag(@product.photo.image.thumb.url, class: "thumbnail") %>
+<% else %>
+<%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+<% end %>
+</div>
+<div class="group">
+<%= f.simple_fields_for :photo do |c| %>
+<%= c.input :image, as: :file %>
+<% end %>
+</div>
+<div class="form-actions">
+<%= f.submit "Submit", class: "btn btn-primary btn-sm", disable_with: "submitting.." %>
+<% end %>
+</div>
+</div>
+
