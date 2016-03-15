@@ -11,7 +11,7 @@ module ApplicationHelper
       alert_class = "alert alert-#{alert_type} alert-dismissable"
       content_tag(:div, alert_content, class: alert_class)
     end
-    alerts.join("\n").html_safe
+    alerts.join("\n").html_safe#一行一個alert窗
   end
 
   def render_cart_items_count(cart)
