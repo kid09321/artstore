@@ -15,4 +15,5 @@ class Admin::UsersController < ApplicationController
     @user.to_admin!
     redirect_to admin_users_path, notice: "修改權限成功"
   end
+
 end

@@ -13,5 +13,10 @@
     </div>
     <p>庫存<%= @product.quantity%>個</p>
     <div class="product-price">價格 <%= @product.price %></div>
-    <div class="pull-right"><%= link_to("加入購物車", add_product_to_cart_product_path(@product), method: :post, class: "btn btn-danger") %></div>
+    <div class="pull-right"><% if @product.quantity >0 %><%= link_to("加入購物車", add_product_to_cart_product_path(@product), method: :post, class: "btn btn-danger") %>
+    <% else %>
+    銷售一空
+    <% end %></div>
+    </div>
+    </div>
 
