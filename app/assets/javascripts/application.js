@@ -16,3 +16,19 @@
 //= require bootstrap/dropdown
 //= require bootstrap/alert
 //= require_tree .
+// $(document).ready(function(){
+//   var sum = 0
+//   $('tr').on('change','select',function(){
+//     var quantity = +$(this).val();
+//     var price = +$(this).closest('tr').find('.price').data('price');
+//     $(this).closest('tr').find('.total').text(quantity * price);
+//   $('.total').each(function(){
+
+//     sum += +$(this).text()
+//   });
+//     $('.cart-total').text("總計" + sum.toString() +"NTD");
+//     $(this).submit();
+
+// });
+// });
+

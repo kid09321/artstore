@@ -8,7 +8,7 @@
   <li><%= link_to("商品", products_path) %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-<li><%= link_to "#" do %>購物車(0)<i class="fa fa-shopping-cart"></i><% end %></li>
+<li><%= link_to carts_path do %>購物車(<%= render_cart_items_count(current_cart) %>)<i class="fa fa-shopping-cart"></i><% end %></li>
 <% if !current_user %>
   <li><%= link_to("登入", new_user_session_path) %></li>
 <% else %>
