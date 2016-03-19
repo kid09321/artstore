@@ -6,7 +6,7 @@
       <th>商品名稱</th>
       <th>商品單價</th>
       <th>商品數量</th>
-      <th>刪除</th>
+      <th>商品總價</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +28,8 @@
       <td>
       <%= current_cart.find_cart_item(cart_item).quantity %>
       </td>
+      <td>
+      <%= cart_item.price * current_cart.find_cart_item(cart_item).quantity%>
     </tr>
   <% end %>
   </tbody>

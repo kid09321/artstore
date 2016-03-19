@@ -1,0 +1,34 @@
+<h2>訂單編號 <%= @order.token %> </h2>
+<h3>訂單狀態: <%= render_is_paid?(@order) %></h3>
+<p class="change_state"><%= render "state_option", order: @order %></p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>商品名稱</th>
+      <th>商品數量</th>
+      <th>商品單價</th>
+      <th>商品總價</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @order_items.each do |item| %>
+    <tr>
+      <td><%= item.product_name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= item.price %></td>
+      <td><%= item.quantity * item.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<table class="table">
+  <tbody>
+    <tr><td>訂購人</td></tr>
+    <tr><td><%= @order_info.billing_name %> - <%= @order_info.billing_address %></td></tr>
+    <tr><td>收件人</td></tr>
+    <tr><td><%= @order_info.shipping_name %> - <%= @order_info.shipping_address %></td></tr>
+  </tbody>
+</table>
+
+
+

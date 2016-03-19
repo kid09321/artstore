@@ -1,0 +1,9 @@
+zh-TW:
+  orders:
+    order_state:
+      order_placed: 已下訂
+      paid: 已付款
+      shipping: 已出貨
+      shipped: 已到貨
+      good_returned: 已退貨
+      order_cancelled: 訂單已取消

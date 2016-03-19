@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root "products#index"
   namespace :admin do
+    resources :orders do
+      member do
+        post :ship
+        post :shipped
+        post :return
+        post :cancel
+      end
+    end
     resources :products
     resources :users do
       member do

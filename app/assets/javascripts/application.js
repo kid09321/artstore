@@ -20,8 +20,8 @@
 
 $(document).ready(function(){
 
-  $('tr').on('change','select',function(){
-
+  $('tr').on('change','select',function(e){
+    e.preventDefault();
     var sum = 0;
     var quantity = +$("option:selected",this).text();
     var price = +$(this).closest('tr').find('.price').data('price');
