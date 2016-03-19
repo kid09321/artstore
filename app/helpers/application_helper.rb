@@ -21,4 +21,5 @@ module ApplicationHelper
   def render_cart_total_price(cart)
     cart.total
   end
+
 end

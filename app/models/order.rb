@@ -36,7 +36,7 @@ class Order < ActiveRecord::Base
     cart.items.each do |product|
     item = items.build
     item.product_name = product.title
-    item.quantity = 1
+    item.quantity = cart.cart_items.find_by(product_id: product).quantity
     item.price = product.price
     item.save
     end

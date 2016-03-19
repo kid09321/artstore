@@ -1,14 +1,19 @@
 <nav class="nav navbar-default" role="navigation" style="margin-bottom:10px">
 <div class="container-fluid">
 <div class="nav navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynav">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
 <a href="/" class="nav navbar-brand">artstore</a>
 </div>
-<div class="nav navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse" id="mynav">
 <ul class="nav navbar-nav">
   <li><%= link_to("商品", products_path) %></li>
 </ul>
 <ul class="nav navbar-nav navbar-right">
-<li><%= link_to carts_path do %>購物車(<%= render_cart_items_count(current_cart) %>)<i class="fa fa-shopping-cart"></i><% end %></li>
+<li><%= link_to carts_path,method: :get do %>購物車(<%= render_cart_items_count(current_cart) %>)<i class="fa fa-shopping-cart"></i><% end %></li>
 <% if !current_user %>
   <li><%= link_to("登入", new_user_session_path) %></li>
 <% else %>
@@ -23,6 +28,7 @@
       <li><%= link_to("商品後台", admin_products_path) %></li>
       <li><%= link_to("使用者後台", admin_users_path) %></li>
     <% end %>
+      <li><%= link_to("我的訂單", account_orders_path) %>
       <li><%= link_to("登出", destroy_user_session_path, method: :delete) %></li>
     </ul>
   </li>
