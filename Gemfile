@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'omniauth-facebook'
 gem 'aasm'
 gem 'font-awesome-rails'
 gem 'carrierwave'
