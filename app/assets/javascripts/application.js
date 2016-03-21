@@ -16,10 +16,11 @@
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/alert
+//= require bootstrap/carousel
 //= require_tree .
 
 $(document).ready(function(){
-
+  $('#myCarousel').carousel('cycle')
   $('.search-bar').on('click','.submit',function(){
     $(this).closest('form').submit();
   });

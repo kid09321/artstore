@@ -21,4 +21,5 @@ class ProductsController < ApplicationController
     end
     redirect_to product_path(@product)
   end
+
 end
