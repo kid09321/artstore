@@ -20,6 +20,10 @@
 
 $(document).ready(function(){
 
+  $('.search-bar').on('click','.submit',function(){
+    $(this).closest('form').submit();
+  });
+
   $('tr').on('change','select',function(e){
     e.preventDefault();
     var sum = 0;

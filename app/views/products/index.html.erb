@@ -1,3 +1,14 @@
+<div class="clearfix"style="height:50px;">
+<span class="pull-right">
+<%= form_tag products_path, method: :get, class: "search-bar" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "搜尋關鍵字", style: "border-color:black; border-top:0;border-left:0;border-right:0;"%>
+    <%= submit_tag "Search", name: nil ,type: "hidden", class: "fa fa-search"%>
+    <a href="#" class="submit">
+    <i class="fa fa-search"></i>
+    </a>
+<% end %>
+</span>
+</div>
 <div class="row">
   <% @products.each do |product| %>
     <div class="col-xs-6 col-md-3">
