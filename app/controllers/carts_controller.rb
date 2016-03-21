@@ -5,8 +5,12 @@ class CartsController < ApplicationController
   end
 
   def checkout
-    @order = current_user.orders.build
-    @info = @order.build_info
+    if !current_cart.cart_items.present?
+      redirect_to carts_path, alert: "你尚未選購商品"
+    else
+      @order = current_user.orders.build
+      @info = @order.build_info
+    end
   end
 
   def clean
