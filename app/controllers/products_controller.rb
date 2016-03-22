@@ -1,20 +1,21 @@
 class ProductsController < ApplicationController
   def index
-    @productsPerPage = 2
+    @productsPerPage = 20
     @totalpage = ((Product.count.to_f)/@productsPerPage.to_f).ceil
     if params[:search]
-       @search = true
+       @search = true #當有搜尋關鍵字時
        @totalpage = ((Product.where('title LIKE ?', "%#{params[:search]}%").count.to_f/@productsPerPage.to_f).ceil)
-       @key = params[:search] #把剛剛搜尋的關鍵字指派給@key變數
+       #搜尋到的總筆數
+       @key = params[:search] #把剛剛用戶搜尋的關鍵字指派給@key變數(保留住)
       if params[:searchpage]
-        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(2).offset(params[:searchpage].to_i * @productsPerPage - 2) #
+        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(20).offset(params[:searchpage].to_i * @productsPerPage - 2) #
       else
-        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(2).offset(0)
+        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(20).offset(0)
       end
     elsif params[:page]
-      @products = Product.limit(2).offset(params[:page].to_i * @productsPerPage - 2)   #根據傳入的頁數值分頁
+      @products = Product.limit(20).offset(params[:page].to_i * @productsPerPage - 2)   #根據傳入的頁數值分頁
     else
-      @products = Product.all.limit(2).offset(0) #預設第一頁(從最一開始顯示兩筆)
+      @products = Product.all.limit(20).offset(0) #預設第一頁(從最一開始顯示兩筆)
     end
   end
 
