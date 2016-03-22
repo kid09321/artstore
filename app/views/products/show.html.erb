@@ -27,7 +27,8 @@
     已售完
     <% end %>
     <!-- <div class="fb-comments" data-href="https://blooming-ocean-22766.herokuapp.com/products/" data-width="500px;" data-numposts="5"></div> -->
-    <%= content_tag(:div,'',class: "fb-comments", 'data-href' => 'https://blooming-ocean-22766.herokuapp.com/products/#{@product.id}', 'data-width='=> '500px;', 'data-numposts'=>'5') %>
+    <%  %>
+    <%= render "fbcomments", product: @product %>
    </div>
    </div>
    </div>

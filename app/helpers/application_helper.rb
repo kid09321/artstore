@@ -22,4 +22,8 @@ module ApplicationHelper
     cart.total
   end
 
+  def comments
+    url = 'https://blooming-ocean-22766.herokuapp.com/products/#{@product.id}'
+    content_tag(:div,'',class: "fb-comments", 'data-href' => url, 'data-width='=> '500px;', 'data-numposts'=>'5')
+  end
 end
