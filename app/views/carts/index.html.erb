@@ -50,6 +50,7 @@
   <%= content_tag(:span, "總計" + render_cart_total_price(current_cart).to_s+ "NTD", class: "cart-total pull-right") %>
 </div>
 <div class="clearfix">
+
   <span class="pull-right"><%= link_to("確認購買", checkout_carts_path, method: :post, class: "btn btn-primary") %></span>
 </div>
 

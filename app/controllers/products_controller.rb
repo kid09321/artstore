@@ -1,9 +1,20 @@
 class ProductsController < ApplicationController
   def index
+    @productsPerPage = 2
+    @totalpage = ((Product.count.to_f)/@productsPerPage.to_f).ceil
     if params[:search]
-      @products = Product.where('title LIKE ?', "%#{params[:search]}%")
+       @search = true
+       @totalpage = ((Product.where('title LIKE ?', "%#{params[:search]}%").count.to_f/@productsPerPage.to_f).ceil)
+       @key = params[:search] #把剛剛搜尋的關鍵字指派給@key變數
+      if params[:searchpage]
+        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(2).offset(params[:searchpage].to_i * @productsPerPage - 2) #
+      else
+        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(2).offset(0)
+      end
+    elsif params[:page]
+      @products = Product.limit(2).offset(params[:page].to_i * @productsPerPage - 2)   #根據傳入的頁數值分頁
     else
-      @products = Product.all
+      @products = Product.all.limit(2).offset(0) #預設第一頁(從最一開始顯示兩筆)
     end
   end
 
@@ -21,5 +32,4 @@ class ProductsController < ApplicationController
     end
     redirect_to product_path(@product)
   end
-
 end
