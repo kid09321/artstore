@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-
+gem "figaro"
+gem 'roadie', "2.4.3"
+gem 'pay2go'
+gem 'letter_opener', group: :development
 gem 'omniauth-facebook'
 gem 'aasm'
 gem 'font-awesome-rails'
