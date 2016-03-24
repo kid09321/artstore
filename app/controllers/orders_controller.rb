@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
       # @order.calculate_total(current_cart)
       # current_cart.clean!
       OrderPlacingService.new(current_cart, @order).place_order!
+      current_cart.cart_items.each do |cart_item|
+        remain_quantity = (cart_item.product.quantity - cart_item.quantity)
+        cart_item.product.update_quantity(remain_quantity)
+      end
       redirect_to order_path(@order.token)
     else
       render "carts/checkout"
