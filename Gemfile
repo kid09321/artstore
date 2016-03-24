@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'fog'
 gem "figaro"
 gem 'roadie', "2.4.3"
 gem 'pay2go'
