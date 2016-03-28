@@ -17,6 +17,11 @@
 //= require bootstrap/collapse
 //= require bootstrap/alert
 //= require bootstrap/carousel
+//= require script.js
+//= require html5shiv.js
+//= require respond.min.js
+//= require imagesloaded.pkgd.min.js
+//= require masonry.pkgd.min.js
 //= require_tree .
 
 $(document).ready(function(){
