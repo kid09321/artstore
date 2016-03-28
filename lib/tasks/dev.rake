@@ -1,6 +1,6 @@
 namespace :dev do
   desc "建立10個使用者帳號"
-  taks :users => :environment do
+  task :users => :environment do
     for i in 1..10 do
       u = User.create(
         email: "demo_user_#{i}@test.com",

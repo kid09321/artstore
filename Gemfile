@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+gem 'delayed_job_active_record'
 gem 'fog'
 gem "figaro"
 gem 'roadie', "2.4.3"
