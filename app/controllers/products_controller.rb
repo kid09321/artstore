@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def index
-    @productsPerPage = 20
+    @productsPerPage = 8
     @totalpage = ((Product.count.to_f)/@productsPerPage.to_f).ceil
     if params[:search]
        @search = true #當有搜尋關鍵字時
@@ -8,9 +8,9 @@ class ProductsController < ApplicationController
        #搜尋到的總筆數
        @key = params[:search] #把剛剛用戶搜尋的關鍵字指派給@key變數(保留住)
       if params[:searchpage]
-        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(20).offset(params[:searchpage].to_i * @productsPerPage - 2) #
+        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(@productsPerPage).offset(params[:searchpage].to_i * @productsPerPage - 2) #
       else
-        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(20).offset(0)
+        @products = Product.where('title LIKE ?', "%#{params[:search]}%").limit(@productsPerPage).offset(0)
       end
     elsif params[:page]
       @products = Product.limit(20).offset(params[:page].to_i * @productsPerPage - 2)   #根據傳入的頁數值分頁
