@@ -13,23 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
+//= require bootstrap/carousel
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/alert
-//= require bootstrap/carousel
-//= require script.js
-//= require html5shiv.js
-//= require respond.min.js
-//= require imagesloaded.pkgd.min.js
-//= require masonry.pkgd.min.js
+//= require bootstrap/transition
 //= require_tree .
 
 $(document).ready(function(){
   $('.search-bar').on('click','.submit',function(){
     $(this).closest('form').submit();
   });
-
+  $('.dropdown').find('a').attr("aria-expended","true");
   $('tr').on('change','select',function(e){
     e.preventDefault();
     var sum = 0;
