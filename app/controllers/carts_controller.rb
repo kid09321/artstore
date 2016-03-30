@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-
+  before_action :authenticate_user!
   def index
     @items = current_cart.items
   end
@@ -8,8 +8,12 @@ class CartsController < ApplicationController
     if !current_cart.cart_items.present?
       redirect_to carts_path, alert: "你尚未選購商品"
     else
-      @order = current_user.orders.build
-      @info = @order.build_info
+      if !current_user
+        redirect_to products_path, alert: "您尚未登入"
+      else
+        @order = current_user.orders.build
+        @info = @order.build_info
+      end
     end
   end
 
