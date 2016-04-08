@@ -41,7 +41,7 @@
     <%= render "pay_with_credit_card", order: @order %>
   </div>
   <div class="pull-right" style="padding: 10px;">
-    <%= link_to("以 ATM 付款", "#", class: "btn btn-lg btn-danger") %>
+    <%= render "pay_with_atm", order: @order %>
   </div>
 <% else %>
   <span class="pullright">此帳單已完成付款</span>

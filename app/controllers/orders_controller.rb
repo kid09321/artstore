@@ -23,14 +23,14 @@ class OrdersController < ApplicationController
     @order_info = @order.info
   end
 
-  def pay_with_credit_card
-    @order = current_user.orders.find_by_token(params[:id])
-    @order.set_payment_with("credit card")
-    @order.make_payment!
-    current_cart.clean!
-    OrderMailer.notify_order_placed(@order).deliver!
-    redirect_to account_orders_path, notice: "完成付款"
-  end
+  # def pay_with_credit_card
+  #   @order = current_user.orders.find_by_token(params[:id])
+  #   @order.set_payment_with("credit card")
+  #   @order.make_payment!
+  #   current_cart.clean!
+  #   OrderMailer.notify_order_placed(@order).deliver!
+  #   redirect_to account_orders_path, notice: "完成付款"
+  # end
 # current_cart.cart_items.each do |cart_item|
       #   remain_quantity = (cart_item.product.quantity - cart_item.quantity)
       #   cart_item.product.update_quantity(remain_quantity)
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by_token(params[:id])
 
     if params["Status"] == "SUCCESS"
-
+      @order.set_payment_with("credit card")
       @order.make_payment!
 
       if @order.is_paid?
@@ -48,6 +48,21 @@ class OrdersController < ApplicationController
       else
         render text: "信用卡失敗"
       end
+    else
+      render text: "交易失敗"
+    end
+  end
+
+  def pay2go_atm_complete
+    @order = Order.find_by_token(params[:id])
+    json_data = JSON.parse(params["JSONData"])
+
+   if json_data["Status"] == "SUCCESS"
+
+      @order.set_payment_with("atm")
+      @order.make_payment!
+
+      render text: "交易成功"
     else
       render text: "交易失敗"
     end
