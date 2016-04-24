@@ -1,0 +1,18 @@
+<h2>商品分類</h2>
+<%= link_to("新增商品類別", new_admin_category_path, class: "btn btn-primary") %>
+<table>
+  <thead>
+    <tr>
+    <th>商品類別</th>
+    <th>商品總數</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.category_name %></td>
+      <td><%= category.quantity %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

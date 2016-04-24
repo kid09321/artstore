@@ -24,6 +24,11 @@ $(document).ready(function(){
   $('.search-bar').on('click','.submit',function(){
     $(this).closest('form').submit();
   });
+  $('.size').on('click',function(){
+    $('.selected').removeClass('selected');
+    $(this).removeClass("selected").addClass("selected");
+
+  })
   $('.dropdown').find('a').attr("aria-expended","true");
   $('tr').on('change','select',function(e){
     e.preventDefault();
@@ -38,6 +43,7 @@ $(document).ready(function(){
     $('.cart-total').text("總計" + sum.toString() +"NTD");
 
     $(this).closest('form').submit();
+
 
 });
 });

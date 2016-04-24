@@ -1,0 +1,5 @@
+<h2>新增分類</h2>
+<%= simple_form_for [:admin,@category] do |f| %>
+<%= f.input :category_name %>
+<%= f.submit "新增分類", disable_with: "Submitting...", class: "btn btn-primary" %>
+<% end %>

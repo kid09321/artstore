@@ -17,6 +17,11 @@
       <%= @product.description %>
     </p>
    </div>
+   <div>尺寸:<% @product.sizes.each do |size|%>
+   <div class="size">
+   <%=link_to(size.size, "#") %>
+   </div>
+   <% end %></div>
    <div>數量 : <%= @product.quantity %> </div>
    <div class="product-price"> $ <%= @product.price %> </div>
    <div class="clearfix">

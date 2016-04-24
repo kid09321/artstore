@@ -7,3 +7,14 @@ zh-TW:
       shipped: 已到貨
       good_returned: 已退貨
       order_cancelled: 訂單已取消
+  HOME: 首頁
+  ABOUT: 關於
+  CONTACT: 聯絡
+  activerecord:
+    errors:
+      messages:
+       taken: 此size已經有了
+
+
+
+#zh-TW.activerecord.errors.models.size.attributes.size.taken

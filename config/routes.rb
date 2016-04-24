@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "products#index"
   namespace :admin do
+    resources :categories
     resources :orders do
       member do
         post :ship
@@ -10,7 +11,9 @@ Rails.application.routes.draw do
         post :cancel
       end
     end
-    resources :products
+    resources :products do
+      resources :sizes
+    end
     resources :users do
       member do
         post :to_admin

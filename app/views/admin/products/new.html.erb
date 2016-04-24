@@ -10,6 +10,7 @@
     <%= f.input :description %>
   </div>
 
+
   <div class="group">
     <%= f.input :quantity %>
   </div>
@@ -17,6 +18,9 @@
   <div class="group">
     <%= f.input :price %>
   </div>
+
+  <div class="group">
+    <%= f.select :gender, ["男", "女"] %>
 
   <div class="form-group">
     <%= f.simple_fields_for :photo do |c| %>

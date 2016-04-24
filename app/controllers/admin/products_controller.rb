@@ -2,11 +2,16 @@ class Admin::ProductsController < AdminController
 
   def index
     @products = Product.all
+
+  end
+  def show
+    @product = Product.find(params[:id])
   end
 
   def new
     @product = Product.new
     @photo = @product.build_photo
+
   end
 
   def create
@@ -21,11 +26,11 @@ class Admin::ProductsController < AdminController
 
   def edit
     @product = Product.find(params[:id])
-
     if @product.photo.present?
-    @photo = @product.photo
+      @photo = @product.photo
     else
-    @photo = @product.build_photo
+      @photo = @product.build_photo
+
     end
   end
 
@@ -49,6 +54,6 @@ class Admin::ProductsController < AdminController
 private
 
   def product_params
-    params.require(:product).permit(:title, :description, :quantity, :price, photo_attributes: [:image, :id])
+    params.require(:product).permit(:title, :description, :quantity, :price,:gender, sizes_attributes: [:size, :id], photo_attributes: [:image, :id])
   end
 end

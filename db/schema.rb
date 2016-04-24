@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328035041) do
+ActiveRecord::Schema.define(version: 20160424171737) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -19,11 +19,26 @@ ActiveRecord::Schema.define(version: 20160328035041) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "quantity",   default: 1
+    t.string   "size"
   end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "category_name"
+    t.integer  "quantity"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "category_products", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -89,6 +104,28 @@ ActiveRecord::Schema.define(version: 20160328035041) do
     t.integer  "price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "gender"
+    t.string   "size"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.string   "size"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "product_id"
+    t.integer  "quantity",   default: 1
+  end
+
+  create_table "specifications", force: :cascade do |t|
+    t.string   "color"
+    t.string   "size"
+    t.integer  "quantity",   default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "product_id"
+    t.string   "image"
+    t.string   "title"
+    t.integer  "price"
   end
 
   create_table "users", force: :cascade do |t|
