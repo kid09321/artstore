@@ -17,14 +17,24 @@
       <%= @product.description %>
     </p>
    </div>
-   <div class="clearfix"><% @product.sizes.each do |size|%>
-   <div class="size">
-   <%=link_to(size.size, "#") %>
+   <div class="clearfix">
+   <% @product.sizes.each do |size|%>
+    <% if size.quantity > 0 %>
+      <div class="size">
+        <%=link_to(size.size, "#") %>
+      </div>
+    <% else %>
+      <div class="soldout">
+        <%= link_to(size.size, "#") %>
+      </div>
+    <% end %>
+   <% end %>
    </div>
-   <% end %></div>
-   <div><% item = current_cart.cart_items.build %>
+   <div ><% item = current_cart.cart_items.build %>
     <%= simple_form_for item, url: add_to_cart_product_path(@product) do |f| %>
-    <%= f.input :quantity %>
+    <div class="group">
+    <%= f.input :quantity, label: "數量" %>
+    </div>
     <%= f.input :size , :as => :hidden%>
 
    </div>

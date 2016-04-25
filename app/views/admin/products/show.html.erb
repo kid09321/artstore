@@ -5,9 +5,28 @@
   <% else %>
     <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
     <% end %>
-<%= link_to("新增尺寸", new_admin_product_size_path(@product), class: "btn btn-primary") %>
-可選尺寸
+<div class="pull-right"><%= link_to("新增尺寸", new_admin_product_size_path(@product), class: "btn btn-primary") %></div>
 
-<% @product.sizes.each do |product| %>
-<div>尺寸：<%= product.size %> - 數量： <%= product.quantity %> - <%= link_to("修改", edit_admin_product_size_path(product.product, product)) %> - <%= link_to("刪除", admin_product_size_path(product.product, product), method: :delete) %></div>
-<% end %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>尺寸</th>
+      <th>數量</th>
+      <th>更改</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @product.sizes.each do |product| %>
+    <tr>
+      <td><%= product.size %></td>
+      <td><%= product.quantity %></td>
+      <td><%= link_to("修改", edit_admin_product_size_path(product.product, product)) %></td>
+      <td><%= link_to("刪除", admin_product_size_path(product.product, product), method: :delete) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

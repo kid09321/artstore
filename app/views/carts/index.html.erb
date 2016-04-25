@@ -15,9 +15,10 @@
     </tr>
   </thead>
   <tbody>
-  <% current_cart.cart_items.each do |cart_item| %> <!-- 把所有購物車中的東西拉出來 -->
+  <% cart_item = current_cart.cart_items.select('product_id, size, sum(quantity) as quantity').group(:product_id, :size) %>
+    <% cart_item.each do |cart_item| %> <!-- 把所有購物車中的東西拉出來 -->
   <% item = cart_item.product %> <!-- 撈出所有購物車中所屬的產品 -->
-    <tr>
+      <tr>
       <td>
       <% if item.photo.image.present? %>
       <%= image_tag(item.photo.image.thumb.url, class: "thumbnail") %>

@@ -42,6 +42,6 @@ end
   private
 
   def size_params
-    params.require(:size).permit(:size)
+    params.require(:size).permit(:size, :quantity)
   end
 end

@@ -25,11 +25,16 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     @product = Product.find(params[:id])
+    if item_params[:size].length == 0
+      redirect_to product_path(@product), alert: "未選擇尺寸"
+    elsif item_params[:quantity].to_i <= 0
+      redirect_to product_path(@product), alert: "請選擇正確數量"
+    elsif item_params[:quantity].to_i > @product.sizes.where(size: item_params[:size]).first.quantity
+      redirect_to product_path(@product), alert: "庫存不足"
+    else
       current_cart.add_product_to_cart(@product, item_params)
-
-      flash[:notice] = "成功加入購物車"
-
-    redirect_to product_path(@product)
+      redirect_to product_path(@product), notice: "成功加入購物車"
+    end
   end
 
   def about

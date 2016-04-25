@@ -110,10 +110,30 @@ select{
   text-decoration: none;
 }
 
+.soldout >a:hover{
+  text-decoration: none;
+}
 
-.size >a:focus{
-  border:1px solid black;
+.selected{
+border:1px solid black;
   text-decoration: none;
   color:black;
+}
+.soldout{
+  color:gray;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: blink;
+  background-color:#DDDDDD;
+  float:left;
+}
+.soldout >a{
+  text-decoration: none;
+  color: gray;
+  display:block;
 }
 
