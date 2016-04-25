@@ -27,6 +27,8 @@ $(document).ready(function(){
   $('.size').on('click',function(){
     $('.selected').removeClass('selected');
     $(this).removeClass("selected").addClass("selected");
+    var size = $(this).find('a').text();
+    $('#cart_item_size').val(size);
 
   })
   $('.dropdown').find('a').attr("aria-expended","true");

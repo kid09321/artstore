@@ -17,20 +17,24 @@
       <%= @product.description %>
     </p>
    </div>
-   <div>尺寸:<% @product.sizes.each do |size|%>
+   <div class="clearfix"><% @product.sizes.each do |size|%>
    <div class="size">
    <%=link_to(size.size, "#") %>
    </div>
    <% end %></div>
-   <div>數量 : <%= @product.quantity %> </div>
+   <div><% item = current_cart.cart_items.build %>
+    <%= simple_form_for item, url: add_to_cart_product_path(@product) do |f| %>
+    <%= f.input :quantity %>
+    <%= f.input :size , :as => :hidden%>
+
+   </div>
    <div class="product-price"> $ <%= @product.price %> </div>
    <div class="clearfix">
     <div class="pull-right">
-      <% if @product.quantity >0 %>
-      <%= link_to("加入購物車",add_to_cart_product_path(@product),method: :post, class: "btn btn primary btn-lg btn-danger" ) %>
-      <% else %>
-        已售完
+
+      <%= f.submit "加入購物車", method: :post, class: "btn btn-primary" %>
       <% end %>
+
     </div>
   </div>
   </div>

@@ -86,37 +86,34 @@ select{
   width:200px;
 
 }
-a{
+.size >a{
   text-decoration: none;
   color: black;
   display:block;
 
 }
+
 .size{
   height: 30px;
   width: 30px;
-  border:1px solid black;
   text-align: center;
   line-height: 30px;
   display: inline-block;
   margin-right: 10px;
   text-decoration: blink;
   color:black;
-}
-.size:hover{
-  display:inline-block;
-  background-color: black;
-  color:white;
-  text-decoration:blink;
+  background-color:#DDDDDD;
+  float:left;
 }
 
-.selected{
-  display:inline-block;
-  background-color: black;
-  color:white;
-  text-decoration:none;
+.size >a:hover{
+  text-decoration: none;
+}
 
+
+.size >a:focus{
+  border:1px solid black;
+  text-decoration: none;
+  color:black;
 }
-.size:active{
-  text-decoration:blink;
-}
+

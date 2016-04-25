@@ -3,6 +3,7 @@
   <thead>
       <tr>
         <th>商品名稱</th>
+        <th>商品尺寸</th>
         <th>商品單價</th>
         <th>商品數量</th>
         <th>商品總價</th>
@@ -12,6 +13,7 @@
   <% @order_items.each do |order_item| %>
     <tr>
       <td><%= order_item.product_name %></td>
+      <td><%= order_item.size %></td>
       <td><%= order_item.price %></td>
       <td><%= order_item.quantity %></td>
       <td><%= order_item.price * order_item.quantity %></td>

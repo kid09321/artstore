@@ -25,12 +25,10 @@ class ProductsController < ApplicationController
 
   def add_to_cart
     @product = Product.find(params[:id])
-    if !current_cart.items.include?(@product)
-      current_cart.add_product_to_cart(@product)
+      current_cart.add_product_to_cart(@product, item_params)
+
       flash[:notice] = "成功加入購物車"
-    else
-      flash[:alert] = "此商品之前已加入過購物車"
-    end
+
     redirect_to product_path(@product)
   end
 
@@ -39,4 +37,9 @@ class ProductsController < ApplicationController
 
   def contact
   end
+  private
+  def item_params
+    params.require(:cart_item).permit(:quantity,:size)
+  end
 end
+

@@ -4,32 +4,37 @@
     <tr>
       <th>商品圖片</th>
       <th>商品名稱</th>
+      <th>商品尺寸</th>
       <th>商品單價</th>
       <th>商品數量</th>
       <th>商品總價</th>
     </tr>
   </thead>
   <tbody>
-  <% current_cart.items.each do |cart_item| %>
+  <% current_cart.cart_items.each do |cart_item| %>
+  <% product = cart_item.product %>
     <tr>
       <td>
-      <% if cart_item.photo.image.present? %>
-      <%= image_tag(cart_item.photo.image.thumb.url, class: "thumbnail") %>
+      <% if product.photo.image.present? %>
+      <%= image_tag(product.photo.image.thumb.url, class: "thumbnail") %>
       <% else %>
       <%= image_tag("http://placehold.it/200x200&text=No pic", class: "thumbnail") %>
       <% end%>
       </td>
       <td>
-      <%= link_to(cart_item.title, product_path(cart_item)) %>
+      <%= link_to(product.title, product_path(product)) %>
       </td>
       <td>
-      <%= cart_item.price %>
+      <%= cart_item.size %>
       </td>
       <td>
-      <%= current_cart.find_cart_item(cart_item).quantity %>
+      <%= product.price %>
       </td>
       <td>
-      <%= cart_item.price * current_cart.find_cart_item(cart_item).quantity%>
+      <%= cart_item.quantity %>
+      </td>
+      <td>
+      <%= product.price * current_cart.find_cart_item(product).quantity%>
     </tr>
   <% end %>
   </tbody>
