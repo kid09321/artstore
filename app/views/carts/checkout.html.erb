@@ -11,7 +11,8 @@
     </tr>
   </thead>
   <tbody>
-  <% current_cart.cart_items.each do |cart_item| %>
+  <% cart_item = current_cart.cart_items.select("product_id, size, sum(quantity) as quantity").group("product_id, size") %>
+  <% cart_item.each do |cart_item| %>
   <% product = cart_item.product %>
     <tr>
       <td>

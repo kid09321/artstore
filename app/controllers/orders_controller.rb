@@ -5,11 +5,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @cart_items = current_cart.cart_items.select("product_id, size, sum(quantity) as quantity").group("product_id, size")
     if @order.save
       # @order.build_item_cache_from_cart(current_cart)
       # @order.calculate_total(current_cart)
       # current_cart.clean!
-      OrderPlacingService.new(current_cart, @order).place_order!
+      OrderPlacingService.new(@cart_items, @order, current_cart).place_order!
 
       redirect_to order_path(@order.token)
     else

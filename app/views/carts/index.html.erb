@@ -18,7 +18,7 @@
   <% cart_item = current_cart.cart_items.select('product_id, size, sum(quantity) as quantity').group(:product_id, :size) %>
     <% cart_item.each do |cart_item| %> <!-- 把所有購物車中的東西拉出來 -->
   <% item = cart_item.product %> <!-- 撈出所有購物車中所屬的產品 -->
-      <tr>
+    <tr>
       <td>
       <% if item.photo.image.present? %>
       <%= image_tag(item.photo.image.thumb.url, class: "thumbnail") %>
@@ -33,12 +33,13 @@
       <%= content_tag(:td, item.price, 'data-price' => item.price, class: "price") %>
       <td>
         <%= simple_form_for cart_item, url: item_path(item) do |f| %>
-        <%=f.select :quantity, 1..item.quantity  %>
+        <%=f.select :quantity, 1..item.sizes.where(size: cart_item.size).first.quantity  %>
+        <!-- cart_item.size是經過group後的尺寸剛好對應到商品的尺寸，然後再從商品的sizes表格下去搜尋尺寸的第一筆（因為是唯一所以第一筆就是）的數量 -->
         <%= f.submit "送出", 'type'=>'hidden', id: "quantity"%>
         <% end %>
       </td>
       <td class="total">
-      <%= render_each_item_total_price(item) %>
+      <%= render_each_item_total_price(cart_item) %>
       </td>
       <td>
       <%= link_to item_path(item),method: :delete, data: { confirm: "Are you sure?"} do %>

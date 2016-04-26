@@ -6,6 +6,7 @@ class Admin::ProductsController < AdminController
   end
   def show
     @product = Product.find(params[:id])
+    @sizes = @product.sizes.all
   end
 
   def new

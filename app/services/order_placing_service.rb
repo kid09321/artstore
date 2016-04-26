@@ -1,11 +1,12 @@
 class OrderPlacingService
-  def initialize(cart, order)
+  def initialize(cart_item, order, cart)
     @order = order
+    @cart_item = cart_item
     @cart = cart
   end
 
   def place_order!
-    @order.build_item_cache_from_cart(@cart)
+    @order.build_item_cache_from_cart(@cart_item)
     @order.calculate_total(@cart)
     @cart.clean!
     OrderMailer.delay.notify_order_placed(@order)

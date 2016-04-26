@@ -32,7 +32,7 @@ class Order < ActiveRecord::Base
 
 
   def build_item_cache_from_cart(cart)
-    cart.cart_items.each do |cart_item|
+    cart.each do |cart_item|
     product = cart_item.product
     item = items.build
     item.product_name = product.title
