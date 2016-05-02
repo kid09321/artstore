@@ -17,10 +17,16 @@ class ProductsController < ApplicationController
     else
       @products = Product.all.limit(20).offset(0) #預設第一頁(從最一開始顯示兩筆)
     end
+
   end
 
   def show
     @product = Product.find(params[:id])
+    @sizes = @product.sizes
+    respond_to do |format|
+      format.html #show.html.erb
+      format.json { render json: @product}
+    end
   end
 
   def add_to_cart
@@ -38,6 +44,7 @@ class ProductsController < ApplicationController
   end
 
   def about
+
   end
 
   def contact
